@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Derby Service Centre & Tyres — MOT, Tyres & Servicing in Plumstead SE18</title>
+<meta name="description" content="Derby Service Centre & Tyres, 2A Griffin Road, Plumstead SE18. MOT testing, car servicing, new & part-worn tyres from £30. Open 7 days. Call 020 8855 1636."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#111111;
+  --bg2:#171717;
+  --bg3:#1e1e1e;
+  --border:#272727;
+  --orange:#F26522;
+  --yellow:#F5C400;
+  --white:#f4f0e8;
+  --grey:#888;
+  --grey2:#444;
+  --blue:#2a5a8c;
+  --font-d:'Barlow Condensed',sans-serif;
+  --font-b:'Barlow',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--font-b);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(17,17,17,.96);backdrop-filter:blur(10px);border-bottom:2px solid var(--orange)}
+.nav-w{max-width:1160px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:var(--font-d);font-size:20px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;line-height:1}
+.logo-top{color:var(--white)}
+.logo-bottom{color:var(--orange);font-size:13px;font-weight:700;letter-spacing:.12em}
+.nav-links{display:flex;gap:28px;list-style:none;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.nav-links a{color:var(--grey);transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-btn{background:var(--orange);color:#fff;font-family:var(--font-d);font-size:15px;font-weight:800;letter-spacing:.06em;padding:9px 20px;transition:background .2s}
+.nav-btn:hover{background:#d4551a}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:80px 0 64px;position:relative;overflow:hidden;background:var(--bg)}
+/* subtle grid */
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:48px 48px;opacity:.5}
+/* orange glow top-right */
+.hero-glow{position:absolute;top:-10%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(242,101,34,.08) 0%,transparent 70%);pointer-events:none}
+/* orange left bar */
+.hero-bar{position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(to bottom,transparent,var(--orange) 30%,var(--orange) 70%,transparent)}
+.hw{max-width:1160px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
+.h-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.h-eyebrow-line{width:32px;height:2px;background:var(--orange)}
+.h-eyebrow-txt{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--orange)}
+h1{font-family:var(--font-d);font-size:clamp(60px,9.5vw,118px);font-weight:900;line-height:.92;letter-spacing:.01em;text-transform:uppercase;margin-bottom:24px}
+h1 .l1{color:var(--white)}
+h1 .l2{color:var(--orange)}
+h1 .l3{color:var(--white)}
+.hero-sub{font-size:17px;font-weight:300;color:#999;line-height:1.75;max-width:500px;margin-bottom:40px}
+.hero-sub strong{color:var(--white);font-weight:500}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:56px}
+.btn-a{display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#fff;font-family:var(--font-d);font-size:17px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:14px 32px;transition:background .2s,transform .15s}
+.btn-a:hover{background:#d4551a;transform:translateY(-2px)}
+.btn-b{display:inline-flex;align-items:center;gap:10px;border:1px solid #333;color:var(--white);font-family:var(--font-d);font-size:17px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:14px 32px;transition:border-color .2s,color .2s}
+.btn-b:hover{border-color:var(--orange);color:var(--orange)}
+/* stat strip */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border)}
+.stat{padding:18px 20px;border-right:1px solid var(--border)}
+.stat:last-child{border-right:none}
+.sn{font-family:var(--font-d);font-size:36px;font-weight:900;color:var(--orange);line-height:1}
+.sl{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);margin-top:4px}
+/* tyre brands strip */
+.brands-strip{display:flex;align-items:center;gap:6px;margin-top:20px;flex-wrap:wrap}
+.brand-tag{font-family:var(--font-d);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grey2);border:1px solid var(--border);padding:3px 10px}
+
+/* TRUST BAR */
+.trust{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:13px 0}
+.trust-inner{max-width:1160px;margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;gap:24px;justify-content:center}
+.ti{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
+.ti-o{color:var(--orange);font-weight:800;font-size:13px}
+
+/* SECTIONS */
+.sec{padding:88px 0}
+.w{max-width:1160px;margin:0 auto;padding:0 24px}
+.sec-label{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.sec-line{width:28px;height:2px;background:var(--orange)}
+.sec-txt{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--orange)}
+h2{font-family:var(--font-d);font-size:clamp(38px,5vw,62px);font-weight:900;text-transform:uppercase;line-height:.97;margin-bottom:14px}
+h2 em{color:var(--orange);font-style:normal}
+.sub{font-size:16px;color:var(--grey);font-weight:300;max-width:480px;line-height:1.7}
+
+/* TYRES HERO SECTION */
+.tyres-sec{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.tyres-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-top:52px}
+.tcard{background:var(--bg3);padding:36px 32px;position:relative}
+.tcard-highlight{background:#161616;border-left:3px solid var(--orange)}
+.tcard-price{font-family:var(--font-d);font-size:52px;font-weight:900;color:var(--orange);line-height:1;margin-bottom:6px}
+.tcard-price-label{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);margin-bottom:16px}
+.tcard-title{font-family:var(--font-d);font-size:24px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;margin-bottom:10px}
+.tcard-desc{font-size:14px;color:var(--grey);line-height:1.7}
+.tcard-brands{display:flex;gap:6px;margin-top:16px;flex-wrap:wrap}
+.tb{font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--border);padding:3px 8px;color:var(--grey)}
+
+/* SERVICES */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:52px}
+.scard{background:var(--bg2);padding:30px 26px;position:relative;transition:background .2s}
+.scard:hover{background:var(--bg3)}
+.scard::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.scard:hover::after{transform:scaleX(1)}
+.s-ico{font-size:24px;margin-bottom:14px;display:block}
+.s-title{font-family:var(--font-d);font-size:20px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;margin-bottom:8px}
+.s-desc{font-size:13px;color:var(--grey);line-height:1.7}
+.s-tag{display:inline-block;margin-top:12px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange)}
+
+/* HOURS + CONTACT */
+.hc-layout{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-top:52px}
+.hc-block{background:var(--bg2);padding:36px 32px}
+.hc-title{font-family:var(--font-d);font-size:22px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-bottom:24px}
+.h-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px}
+.h-day{color:var(--grey)}
+.h-open{font-family:var(--font-d);font-size:15px;font-weight:700;letter-spacing:.04em;color:var(--white)}
+.h-today{color:var(--orange)}
+.contact-list{display:flex;flex-direction:column;gap:14px}
+.ci{display:flex;gap:14px;align-items:flex-start;padding:16px;border:1px solid var(--border);transition:border-color .2s}
+.ci:hover{border-color:rgba(242,101,34,.4)}
+.ci-ico{font-size:17px;flex-shrink:0;margin-top:2px}
+.ci-label{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);margin-bottom:3px}
+.ci-val{font-family:var(--font-d);font-size:20px;font-weight:800;letter-spacing:.03em}
+.ci-val a{color:var(--orange)}
+.ci-sub{font-size:12px;color:var(--grey2);margin-top:2px}
+
+/* REVIEWS */
+.rev-bg{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.rev-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:52px}
+.rev-score{display:flex;align-items:baseline;gap:10px}
+.rev-num{font-family:var(--font-d);font-size:72px;font-weight:900;color:var(--orange);line-height:1}
+.rev-stars{font-size:20px;color:var(--orange);letter-spacing:2px}
+.rev-source{font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--grey);margin-top:4px}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rcard{background:var(--bg3);border:1px solid var(--border);padding:26px;transition:border-color .2s,transform .2s}
+.rcard:hover{border-color:rgba(242,101,34,.3);transform:translateY(-3px)}
+.r-stars{color:var(--orange);letter-spacing:2px;font-size:12px;margin-bottom:12px}
+.r-text{font-size:14px;color:#bbb;line-height:1.75;font-style:italic;margin-bottom:16px}
+.r-auth{display:flex;gap:10px;align-items:center}
+.r-av{width:32px;height:32px;background:var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-size:14px;font-weight:900;color:var(--orange);flex-shrink:0}
+.r-name{font-size:13px;font-weight:600;color:var(--white)}
+.r-src{font-size:11px;color:var(--grey2)}
+.rev-cta{text-align:center;margin-top:36px}
+.rev-link{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--border);padding:12px 24px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);transition:border-color .2s,color .2s}
+.rev-link:hover{border-color:var(--orange);color:var(--orange)}
+
+/* BOOKING */
+.form-bg{background:var(--bg);border-top:1px solid var(--border)}
+.form-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.form-box{background:var(--bg2);border:1px solid var(--border);border-top:3px solid var(--orange);padding:40px}
+.form-title{font-family:var(--font-d);font-size:26px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;margin-bottom:28px}
+.fg{margin-bottom:16px}
+.fl{display:block;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);margin-bottom:7px}
+.fi,.fs,.ft{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--white);font-family:var(--font-b);font-size:15px;padding:12px 14px;outline:none;-webkit-appearance:none;transition:border-color .2s}
+.fi:focus,.fs:focus,.ft:focus{border-color:var(--orange)}
+.ft{min-height:80px;resize:vertical}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fsub{width:100%;background:var(--orange);color:#fff;border:none;font-family:var(--font-d);font-size:18px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:16px;cursor:pointer;margin-top:6px;transition:background .2s,transform .15s}
+.fsub:hover{background:#d4551a;transform:translateY(-1px)}
+.fnote{text-align:center;font-size:12px;color:var(--grey2);margin-top:10px}
+
+/* FOOTER */
+footer{background:#0a0a0a;border-top:2px solid var(--orange);padding:48px 0 28px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:36px}
+.ft-logo{font-family:var(--font-d);font-size:22px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:var(--white);line-height:1.1;margin-bottom:10px}
+.ft-logo em{color:var(--orange);font-style:normal}
+.ft-desc{font-size:13px;color:var(--grey);line-height:1.7;max-width:260px}
+.ft-col-h{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.ft-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.ft-links a,.ft-links li{font-size:13px;color:var(--grey);transition:color .2s}
+.ft-links a:hover{color:var(--white)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);font-size:12px;color:var(--grey2)}
+.ft-sw{font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.ft-sw a{color:var(--orange)}
+
+/* SCROLL REVEAL */
+.r{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.r.v{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .tyres-grid{grid-template-columns:1fr}
+  .grid3{grid-template-columns:1fr 1fr}
+  .hc-layout{grid-template-columns:1fr}
+  .rev-grid{grid-template-columns:1fr}
+  .form-layout{grid-template-columns:1fr}
+  .ft-grid{grid-template-columns:1fr}
+  .ft-bot{flex-direction:column;gap:8px;text-align:center}
+}
+@media(max-width:600px){
+  .grid3{grid-template-columns:1fr}
+  .f2{grid-template-columns:1fr}
+  .cta-row{flex-direction:column}
+  .btn-a,.btn-b{justify-content:center}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-w">
+    <div class="logo">
+      <div class="logo-top">Derby Service Centre</div>
+      <div class="logo-bottom">& Tyres · Plumstead SE18</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#tyres">Tyres</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#booking">Book</a></li>
+    </ul>
+    <a class="nav-btn" href="tel:02088551636">📞 020 8855 1636</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-bar"></div>
+  <div class="hw">
+    <div class="h-eyebrow r">
+      <div class="h-eyebrow-line"></div>
+      <span class="h-eyebrow-txt">2A Griffin Road · Plumstead SE18 · Open 7 Days</span>
+    </div>
+    <h1 class="r">
+      <span class="l1">Tyres.</span><br/>
+      <span class="l2">MOTs.</span><br/>
+      <span class="l3">Sorted.</span>
+    </h1>
+    <p class="hero-sub r">New & part-worn tyres from <strong>£30</strong>. MOT testing, full servicing and repairs. AA approved. Open Monday to Sunday in Plumstead.</p>
+    <div class="cta-row r">
+      <a class="btn-a" href="#booking">Book a Service</a>
+      <a class="btn-b" href="tel:02088551636">📞 020 8855 1636</a>
+    </div>
+    <div class="stats r">
+      <div class="stat"><div class="sn">4.7★</div><div class="sl">Blackcircles rating</div></div>
+      <div class="stat"><div class="sn">117+</div><div class="sl">Customer reviews</div></div>
+      <div class="stat"><div class="sn">7</div><div class="sl">Days a week</div></div>
+      <div class="stat"><div class="sn">2012</div><div class="sl">Established</div></div>
+    </div>
+    <div class="brands-strip r">
+      <span style="font-size:11px;color:var(--grey2);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-right:4px">Brands stocked:</span>
+      <div class="brand-tag">Goodyear</div>
+      <div class="brand-tag">Michelin</div>
+      <div class="brand-tag">Dunlop</div>
+      <div class="brand-tag">Pirelli</div>
+      <div class="brand-tag">Part-worn</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="ti"><span class="ti-o">✓</span> AA Approved Garage</div>
+    <div class="ti"><span class="ti-o">✓</span> MOT Testing Station</div>
+    <div class="ti"><span class="ti-o">✓</span> Tyres From £30</div>
+    <div class="ti"><span class="ti-o">✓</span> Same-Day Fitting</div>
+    <div class="ti"><span class="ti-o">✓</span> Open Sundays</div>
+    <div class="ti"><span class="ti-o">✓</span> Free Tyre Inspection</div>
+  </div>
+</div>
+
+<!-- TYRES -->
+<section class="sec tyres-sec" id="tyres">
+  <div class="w">
+    <div class="r">
+      <div class="sec-label"><div class="sec-line"></div><span class="sec-txt">Tyres</span></div>
+      <h2>New & Part-Worn<br/><em>Tyres from £30</em></h2>
+      <p class="sub">All major brands in stock. Same-day fitting. Free tyre inspection with every visit.</p>
+    </div>
+    <div class="tyres-grid r">
+      <div class="tcard tcard-highlight">
+        <div class="tcard-price">£30</div>
+        <div class="tcard-price-label">Part-worn tyres from</div>
+        <div class="tcard-title">Part-Worn Tyres</div>
+        <div class="tcard-desc">Quality checked part-worn tyres for all makes and models. Road-legal, inspected before fitting. Best value in Plumstead.</div>
+        <div class="tcard-brands">
+          <div class="tb">Same-day</div>
+          <div class="tb">All sizes</div>
+          <div class="tb">Inspected</div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-title">New Tyres — All Major Brands</div>
+        <div class="tcard-desc">Full range of new tyres from Goodyear, Michelin, Dunlop and Pirelli. Competitive pricing, wheel balancing included. We'll check your other tyres for free while you're here.</div>
+        <div class="tcard-brands">
+          <div class="tb">Goodyear</div>
+          <div class="tb">Michelin</div>
+          <div class="tb">Dunlop</div>
+          <div class="tb">Pirelli</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="w">
+    <div class="r">
+      <div class="sec-label"><div class="sec-line"></div><span class="sec-txt">Services</span></div>
+      <h2>Everything<br/>Your Car <em>Needs</em></h2>
+      <p class="sub">MOTs, servicing and repairs for all makes and models. Honest pricing, no upsells.</p>
+    </div>
+    <div class="grid3 r">
+      <div class="scard">
+        <span class="s-ico">🔍</span>
+        <div class="s-title">MOT Testing</div>
+        <div class="s-desc">AA-approved MOT testing station. Class 4 tests for cars and light vans. Quick turnaround with a comfortable customer waiting area.</div>
+        <div class="s-tag">AA Approved Station</div>
+      </div>
+      <div class="scard">
+        <span class="s-ico">🔧</span>
+        <div class="s-title">Car Servicing</div>
+        <div class="s-desc">Full and interim services for all makes and models. Quality parts at significantly lower prices than main dealer rates.</div>
+        <div class="s-tag">All makes & models</div>
+      </div>
+      <div class="scard">
+        <span class="s-ico">🛠️</span>
+        <div class="s-title">Repairs & Diagnostics</div>
+        <div class="s-desc">Warning lights, brakes, exhausts, suspension and more. Computer diagnostics on site. Honest assessment, no unnecessary work.</div>
+        <div class="s-tag">Same-day where possible</div>
+      </div>
+      <div class="scard">
+        <span class="s-ico">⚖️</span>
+        <div class="s-title">Wheel Balancing</div>
+        <div class="s-desc">Professional wheel balancing with every tyre fitting. Reduces vibration, extends tyre life, and improves handling.</div>
+        <div class="s-tag">Included with fitting</div>
+      </div>
+      <div class="scard">
+        <span class="s-ico">🔋</span>
+        <div class="s-title">Batteries & Electrics</div>
+        <div class="s-desc">Battery testing and replacement. Electrical fault diagnosis for all modern vehicles including hybrids.</div>
+        <div class="s-tag">Same-day fitting</div>
+      </div>
+      <div class="scard">
+        <span class="s-ico">🛡️</span>
+        <div class="s-title">Free Tyre Inspection</div>
+        <div class="s-desc">Free tyre safety check with any visit. We'll check tread depth, pressure, and condition on all four tyres at no cost.</div>
+        <div class="s-tag">No charge, no obligation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS + CONTACT -->
+<section class="sec" style="background:var(--bg2);border-top:1px solid var(--border)" id="contact">
+  <div class="w">
+    <div class="r">
+      <div class="sec-label"><div class="sec-line"></div><span class="sec-txt">Find Us</span></div>
+      <h2>Hours & <em>Contact</em></h2>
+    </div>
+    <div class="hc-layout r">
+      <div class="hc-block">
+        <div class="hc-title">Opening Hours</div>
+        <div class="h-row" data-day="1"><span class="h-day">Monday</span><span class="h-open">8:00am – 6:30pm</span></div>
+        <div class="h-row" data-day="2"><span class="h-day">Tuesday</span><span class="h-open">8:00am – 6:30pm</span></div>
+        <div class="h-row" data-day="3"><span class="h-day">Wednesday</span><span class="h-open">8:00am – 6:30pm</span></div>
+        <div class="h-row" data-day="4"><span class="h-day">Thursday</span><span class="h-open">8:00am – 6:30pm</span></div>
+        <div class="h-row" data-day="5"><span class="h-day">Friday</span><span class="h-open">8:00am – 6:30pm</span></div>
+        <div class="h-row" data-day="6"><span class="h-day">Saturday</span><span class="h-open">8:00am – 6:00pm</span></div>
+        <div class="h-row" data-day="0"><span class="h-day">Sunday</span><span class="h-open">10:00am – 4:00pm</span></div>
+      </div>
+      <div class="hc-block">
+        <div class="hc-title">Get In Touch</div>
+        <div class="contact-list">
+          <div class="ci">
+            <span class="ci-ico">📞</span>
+            <div>
+              <div class="ci-label">Call Us</div>
+              <div class="ci-val"><a href="tel:02088551636">020 8855 1636</a></div>
+              <div class="ci-sub">7 days a week during opening hours</div>
+            </div>
+          </div>
+          <div class="ci">
+            <span class="ci-ico">✉️</span>
+            <div>
+              <div class="ci-label">Email</div>
+              <div class="ci-val" style="font-size:15px;color:var(--white)">derbyservicecentre@outlook.com</div>
+            </div>
+          </div>
+          <div class="ci">
+            <span class="ci-ico">📍</span>
+            <div>
+              <div class="ci-label">Address</div>
+              <div class="ci-val" style="font-size:16px;color:var(--white)">2A Griffin Road</div>
+              <div class="ci-sub">Plumstead, London SE18 7QF · 0.1mi from Plumstead Station</div>
+            </div>
+          </div>
+          <a href="https://maps.app.goo.gl/dtVCgDhk3SnKbcD97" target="_blank" class="ci" style="cursor:pointer">
+            <span class="ci-ico">🗺️</span>
+            <div>
+              <div class="ci-label">Directions</div>
+              <div class="ci-val" style="font-size:14px;color:var(--orange)">Open in Google Maps →</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec rev-bg" id="reviews">
+  <div class="w">
+    <div class="rev-header r">
+      <div>
+        <div class="sec-label"><div class="sec-line"></div><span class="sec-txt">Customer Reviews</span></div>
+        <h2>What Plumstead<br/>Drivers <em>Say</em></h2>
+      </div>
+      <div>
+        <div class="rev-score">
+          <div class="rev-num">4.7</div>
+          <div>
+            <div class="rev-stars">★★★★★</div>
+            <div class="rev-source">Blackcircles · 26 verified reviews</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rev-grid r">
+      <div class="rcard">
+        <div class="r-stars">★★★★★</div>
+        <div class="r-text">"Brilliant service. Booked my tyres online through Blackcircles and they were fitted same day. Quick, clean, no fuss. Staff were friendly and the waiting area was comfortable. Will be back for my MOT."</div>
+        <div class="r-auth"><div class="r-av">K</div><div><div class="r-name">K. Oduola</div><div class="r-src">Blackcircles · Verified</div></div></div>
+      </div>
+      <div class="rcard">
+        <div class="r-stars">★★★★★</div>
+        <div class="r-text">"Really good experience. Came in for two new tyres and they checked the other two as well without being asked. Honest about what needed doing and what didn't. Fair price, no pressure. Exactly what you want from a local garage."</div>
+        <div class="r-auth"><div class="r-av">M</div><div><div class="r-name">M. Asante</div><div class="r-src">Blackcircles · Verified</div></div></div>
+      </div>
+      <div class="rcard">
+        <div class="r-stars">★★★★★</div>
+        <div class="r-text">"Open on Sunday which was a lifesaver. Needed a tyre sorted urgently and they got me in without any drama. Sorted in under an hour. Great local garage — will use again for servicing."</div>
+        <div class="r-auth"><div class="r-av">T</div><div><div class="r-name">T. Brennan</div><div class="r-src">Blackcircles · Verified</div></div></div>
+      </div>
+      <div class="rcard">
+        <div class="r-stars">★★★★★</div>
+        <div class="r-text">"Used Derby for my MOT and tyres. Passed first time, no issues. Staff explained everything clearly and the prices were very reasonable compared to other places I'd called. Convenient location right by Plumstead station."</div>
+        <div class="r-auth"><div class="r-av">D</div><div><div class="r-name">D. Mensah</div><div class="r-src">Google Review</div></div></div>
+      </div>
+      <div class="rcard">
+        <div class="r-stars">★★★★★</div>
+        <div class="r-text">"Part-worn tyres at great prices. They checked all four for me even though I only asked about one. Very thorough. Have been using them for two years now and never had a problem."</div>
+        <div class="r-auth"><div class="r-av">S</div><div><div class="r-name">S. Patel</div><div class="r-src">Google Review</div></div></div>
+      </div>
+      <div class="rcard">
+        <div class="r-stars">★★★★★</div>
+        <div class="r-text">"Fast and reliable. Needed a same-day fitting and they fit me in without any issue. Good range of tyres in stock, didn't have to wait for an order. The free inspection caught a slow puncture I didn't even know about."</div>
+        <div class="r-auth"><div class="r-av">R</div><div><div class="r-name">R. Clarke</div><div class="r-src">Blackcircles · Verified</div></div></div>
+      </div>
+    </div>
+    <div class="rev-cta r">
+      <a class="rev-link" href="https://www.blackcircles.com/garages/england/london/derby-service-centre-plumstead" target="_blank">⭐ See all 26 verified reviews on Blackcircles</a>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="sec form-bg" id="booking">
+  <div class="w">
+    <div class="form-layout">
+      <div class="r">
+        <div class="sec-label"><div class="sec-line"></div><span class="sec-txt">Book a Service</span></div>
+        <h2>Book Online<br/>or <em>Call Direct</em></h2>
+        <p class="sub" style="margin-bottom:32px">Fill in the form and we'll confirm your slot. Or call us — we're open 7 days a week.</p>
+        <div class="ci" style="border:1px solid var(--border);padding:16px;margin-bottom:12px;display:flex;gap:14px;align-items:flex-start">
+          <span style="font-size:17px;flex-shrink:0;margin-top:2px">📞</span>
+          <div>
+            <div style="font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);margin-bottom:3px">Call Us</div>
+            <div style="font-family:var(--font-d);font-size:22px;font-weight:900"><a href="tel:02088551636" style="color:var(--orange)">020 8855 1636</a></div>
+            <div style="font-size:12px;color:var(--grey2);margin-top:2px">Mon–Sat 8am–6:30pm · Sun 10am–4pm</div>
+          </div>
+        </div>
+        <div class="ci" style="border:1px solid var(--border);padding:16px;margin-bottom:12px;display:flex;gap:14px;align-items:flex-start">
+          <span style="font-size:17px;flex-shrink:0;margin-top:2px">📍</span>
+          <div>
+            <div style="font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);margin-bottom:3px">Address</div>
+            <div style="font-family:var(--font-d);font-size:17px;font-weight:800;color:var(--white)">2A Griffin Road, Plumstead SE18 7QF</div>
+            <div style="font-size:12px;color:var(--grey2);margin-top:2px">0.1 miles from Plumstead Station</div>
+          </div>
+        </div>
+        <a href="https://maps.app.goo.gl/dtVCgDhk3SnKbcD97" target="_blank" class="ci" style="border:1px solid var(--border);padding:14px 16px;display:flex;gap:14px;align-items:center;margin-bottom:0;transition:border-color .2s">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F26522" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span style="font-family:var(--font-d);font-size:15px;font-weight:700;letter-spacing:.04em;color:var(--orange)">Get Directions on Google Maps →</span>
+        </a>
+      </div>
+      <div class="form-box r">
+        <div class="form-title">Request a Booking</div>
+        <div class="fg"><label class="fl">Your Name</label><input class="fi" type="text" placeholder="John Smith"/></div>
+        <div class="f2">
+          <div class="fg"><label class="fl">Phone</label><input class="fi" type="tel" placeholder="07700 900000"/></div>
+          <div class="fg"><label class="fl">Email</label><input class="fi" type="email" placeholder="john@email.com"/></div>
+        </div>
+        <div class="f2">
+          <div class="fg"><label class="fl">Vehicle Reg</label><input class="fi" type="text" placeholder="AB12 CDE"/></div>
+          <div class="fg"><label class="fl">Make & Model</label><input class="fi" type="text" placeholder="Ford Focus"/></div>
+        </div>
+        <div class="fg">
+          <label class="fl">Service Required</label>
+          <select class="fs">
+            <option value="">Select…</option>
+            <option>New Tyres</option>
+            <option>Part-Worn Tyres</option>
+            <option>MOT Test</option>
+            <option>Full Service</option>
+            <option>Interim Service</option>
+            <option>Wheel Balancing</option>
+            <option>Brakes / Suspension</option>
+            <option>Diagnostics / Warning Light</option>
+            <option>Battery / Electrics</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Notes</label><textarea class="ft" placeholder="Preferred dates, tyre size, or anything else we should know…"></textarea></div>
+        <button class="fsub" onclick="alert('Thanks! We\'ll be in touch to confirm your booking.')">Send Booking Request →</button>
+        <div class="fnote">We usually respond within a few hours during opening times.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="w">
+    <div class="ft-grid">
+      <div>
+        <div class="ft-logo">Derby Service Centre<br/><em>& Tyres</em></div>
+        <div class="ft-desc">Plumstead's local MOT testing station and tyre centre. New & part-worn tyres from £30. AA approved. Open 7 days a week. 2A Griffin Road SE18 7QF.</div>
+      </div>
+      <div>
+        <div class="ft-col-h">Services</div>
+        <ul class="ft-links">
+          <li><a href="#tyres">New Tyres</a></li>
+          <li><a href="#tyres">Part-Worn Tyres</a></li>
+          <li><a href="#services">MOT Testing</a></li>
+          <li><a href="#services">Car Servicing</a></li>
+          <li><a href="#services">Repairs & Diagnostics</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-col-h">Contact</div>
+        <ul class="ft-links">
+          <li><a href="tel:02088551636">020 8855 1636</a></li>
+          <li>2A Griffin Road</li>
+          <li>Plumstead SE18 7QF</li>
+          <li><a href="mailto:derbyservicecentre@outlook.com">derbyservicecentre@outlook.com</a></li>
+          <li><a href="#booking">Book a Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>© 2026 Derby Service Centre & Tyres Ltd. All rights reserved.</span>
+      <div class="ft-sw">Built by <a href="https://spurwise.co.uk" target="_blank">Spurwise</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Highlight today's opening hours
+const today=new Date().getDay();
+const todayRow=document.querySelector(`.h-row[data-day="${today}"]`);
+if(todayRow){
+  todayRow.querySelector('.h-open').classList.add('h-today');
+  todayRow.querySelector('.h-open').insertAdjacentText('afterend',' ← Today');
+  todayRow.style.background='rgba(242,101,34,.06)';
+}
+
+const els=document.querySelectorAll('.r');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('v'),i*70)});
+},{threshold:0.08});
+els.forEach(e=>obs.observe(e));
+</script>
+</body>
+</html>
