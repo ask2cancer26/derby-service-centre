@@ -42,10 +42,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(17,17,17,.96)
 
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;padding:80px 0 64px;position:relative;overflow:hidden;background:var(--bg)}
-/* subtle grid */
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:48px 48px;opacity:.5}
+/* hero photo */
+.hero-photo{position:absolute;inset:0;background:url('photo1.jpg') center center/cover no-repeat;opacity:1}
+.hero-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.92) 40%,rgba(10,10,10,.65) 70%,rgba(10,10,10,.4) 100%)}
+/* subtle grid over photo */
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:48px 48px;opacity:.2}
 /* orange glow top-right */
-.hero-glow{position:absolute;top:-10%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(242,101,34,.08) 0%,transparent 70%);pointer-events:none}
+.hero-glow{position:absolute;top:-10%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(242,101,34,.06) 0%,transparent 70%);pointer-events:none}
 /* orange left bar */
 .hero-bar{position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(to bottom,transparent,var(--orange) 30%,var(--orange) 70%,transparent)}
 .hw{max-width:1160px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
@@ -178,6 +181,22 @@ footer{background:#0a0a0a;border-top:2px solid var(--orange);padding:48px 0 28px
 .ft-sw{font-size:11px;letter-spacing:.1em;text-transform:uppercase}
 .ft-sw a{color:var(--orange)}
 
+/* GALLERY */
+.gallery-sec{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.gallery-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:320px 260px;gap:4px;margin-top:48px;border:1px solid var(--border)}
+.gp{overflow:hidden;position:relative;cursor:pointer}
+.gp img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease,filter .4s ease;filter:brightness(.85)}
+.gp:hover img{transform:scale(1.04);filter:brightness(1)}
+.gp-span{grid-column:span 1;grid-row:span 1}
+.gp-tall{grid-row:span 2}
+.gp-caption{position:absolute;bottom:0;left:0;right:0;padding:14px 18px;background:linear-gradient(transparent,rgba(0,0,0,.7));font-family:var(--font-d);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);opacity:0;transition:opacity .3s}
+.gp:hover .gp-caption{opacity:1}
+@media(max-width:700px){
+  .gallery-grid{grid-template-columns:1fr;grid-template-rows:auto}
+  .gp-tall{grid-row:span 1}
+  .gp{height:240px}
+}
+
 /* SCROLL REVEAL */
 .r{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
 .r.v{opacity:1;transform:translateY(0)}
@@ -214,6 +233,7 @@ footer{background:#0a0a0a;border-top:2px solid var(--orange);padding:48px 0 28px
     <ul class="nav-links">
       <li><a href="#tyres">Tyres</a></li>
       <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#booking">Book</a></li>
     </ul>
@@ -223,6 +243,7 @@ footer{background:#0a0a0a;border-top:2px solid var(--orange);padding:48px 0 28px
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-photo"></div>
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div class="hero-bar"></div>
@@ -348,6 +369,31 @@ footer{background:#0a0a0a;border-top:2px solid var(--orange);padding:48px 0 28px
         <div class="s-title">Free Tyre Inspection</div>
         <div class="s-desc">Free tyre safety check with any visit. We'll check tread depth, pressure, and condition on all four tyres at no cost.</div>
         <div class="s-tag">No charge, no obligation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="sec gallery-sec" id="gallery">
+  <div class="w">
+    <div class="r">
+      <div class="sec-label"><div class="sec-line"></div><span class="sec-txt">The Garage</span></div>
+      <h2>See Our <em>Workshop</em></h2>
+      <p class="sub">Professional equipment, clean working environment. Come in and see for yourself.</p>
+    </div>
+    <div class="gallery-grid r">
+      <div class="gp gp-tall">
+        <img src="photo1.jpg" alt="Derby Service Centre exterior — MOT Testing Station, 2A Griffin Road Plumstead SE18"/>
+        <div class="gp-caption">Exterior — Griffin Road SE18</div>
+      </div>
+      <div class="gp">
+        <img src="photo2.jpg" alt="Interior workshop with car on ramp at Derby Service Centre"/>
+        <div class="gp-caption">Workshop — car on ramp</div>
+      </div>
+      <div class="gp">
+        <img src="photo4.jpg" alt="3500kg scissor lift — Derby Service Centre workshop equipment"/>
+        <div class="gp-caption">3500kg scissor lift</div>
       </div>
     </div>
   </div>
@@ -523,7 +569,7 @@ footer{background:#0a0a0a;border-top:2px solid var(--orange);padding:48px 0 28px
           </select>
         </div>
         <div class="fg"><label class="fl">Notes</label><textarea class="ft" placeholder="Preferred dates, tyre size, or anything else we should know…"></textarea></div>
-        <button class="fsub" onclick="alert('Thanks! We\'ll be in touch to confirm your booking.')">Send Booking Request →</button>
+        <button class="fsub" onclick="sendBooking()">Send Booking Request →</button>
         <div class="fnote">We usually respond within a few hours during opening times.</div>
       </div>
     </div>
@@ -567,6 +613,21 @@ footer{background:#0a0a0a;border-top:2px solid var(--orange);padding:48px 0 28px
 </footer>
 
 <script>
+function sendBooking(){
+  const f=document.getElementById('booking');
+  const name=f.querySelector('input[type="text"]').value||'Not provided';
+  const phone=f.querySelector('input[type="tel"]').value||'Not provided';
+  const email=f.querySelector('input[type="email"]').value||'Not provided';
+  const inputs=f.querySelectorAll('input[type="text"]');
+  const reg=inputs[1]?inputs[1].value:'Not provided';
+  const make=inputs[2]?inputs[2].value:'Not provided';
+  const service=f.querySelector('select').value||'Not specified';
+  const notes=f.querySelector('textarea').value||'None';
+  const body=`New booking request from your website:\n\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nVehicle Reg: ${reg}\nMake & Model: ${make}\nService Required: ${service}\nNotes: ${notes}`;
+  const subject='Website Booking Request — Derby Service Centre';
+  window.location.href=`mailto:derbyservicecentre@outlook.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 // Highlight today's opening hours
 const today=new Date().getDay();
 const todayRow=document.querySelector(`.h-row[data-day="${today}"]`);
