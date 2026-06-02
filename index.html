@@ -30,15 +30,21 @@ a{color:inherit;text-decoration:none}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(17,17,17,.96);backdrop-filter:blur(10px);border-bottom:2px solid var(--orange)}
-.nav-w{max-width:1160px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px}
-.logo{font-family:var(--font-d);font-size:20px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;line-height:1}
+.nav-w{max-width:1160px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:60px;gap:8px}
+.logo{font-family:var(--font-d);font-size:20px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;line-height:1;flex-shrink:0}
+@media(max-width:400px){.logo{font-size:15px}}
 .logo-top{color:var(--white)}
 .logo-bottom{color:var(--orange);font-size:13px;font-weight:700;letter-spacing:.12em}
 .nav-links{display:flex;gap:28px;list-style:none;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
 .nav-links a{color:var(--grey);transition:color .2s}
 .nav-links a:hover{color:var(--white)}
-.nav-btn{background:var(--orange);color:#fff;font-family:var(--font-d);font-size:15px;font-weight:800;letter-spacing:.06em;padding:9px 20px;transition:background .2s}
+.nav-btn{background:var(--orange);color:#fff;font-family:var(--font-d);font-size:15px;font-weight:800;letter-spacing:.06em;padding:9px 20px;transition:background .2s;white-space:nowrap;flex-shrink:0}
 .nav-btn:hover{background:#d4551a}
+.nav-btn-text{display:inline}
+@media(max-width:520px){
+  .nav-btn{font-size:13px;padding:9px 14px}
+  .nav-btn-text{display:none}
+}
 
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;padding:80px 0 64px;position:relative;overflow:hidden;background:var(--bg)}
@@ -201,9 +207,36 @@ footer{background:#0a0a0a;border-top:2px solid var(--orange);padding:48px 0 28px
 .r{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
 .r.v{opacity:1;transform:translateY(0)}
 
+/* MOBILE NAV */
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--white);transition:transform .3s,opacity .3s}
+.mobile-nav{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(17,17,17,.98);border-bottom:2px solid var(--orange);z-index:98;padding:20px 24px;flex-direction:column;gap:0}
+.mobile-nav.open{display:flex}
+.mobile-nav a{display:block;padding:14px 0;border-bottom:1px solid var(--border);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);transition:color .2s}
+.mobile-nav a:last-child{border-bottom:none;color:var(--orange)}
+.mobile-nav a:hover{color:var(--white)}
+
+/* WHY CHOOSE US */
+.why-strip{background:var(--bg3);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.why-item{padding:36px 32px;border-right:1px solid var(--border);display:flex;gap:20px;align-items:flex-start}
+.why-item:last-child{border-right:none}
+.why-ico{font-size:28px;flex-shrink:0;margin-top:2px}
+.why-title{font-family:var(--font-d);font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;margin-bottom:6px}
+.why-desc{font-size:13px;color:var(--grey);line-height:1.7}
+
+/* GALLERY 4-photo */
+.gallery-grid-4{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:320px 240px;gap:4px;margin-top:48px}
+.gallery-grid-4 .gp:nth-child(1){grid-row:span 2}
+
+/* MAP */
+.map-wrap{margin-top:24px;border:1px solid var(--border);overflow:hidden;height:220px}
+.map-wrap iframe{width:100%;height:100%;border:none;filter:grayscale(1) invert(1) contrast(.85)}
+
 /* RESPONSIVE */
 @media(max-width:900px){
   .nav-links{display:none}
+  .nav-toggle{display:flex}
   .stats{grid-template-columns:repeat(2,1fr)}
   .tyres-grid{grid-template-columns:1fr}
   .grid3{grid-template-columns:1fr 1fr}
@@ -212,6 +245,12 @@ footer{background:#0a0a0a;border-top:2px solid var(--orange);padding:48px 0 28px
   .form-layout{grid-template-columns:1fr}
   .ft-grid{grid-template-columns:1fr}
   .ft-bot{flex-direction:column;gap:8px;text-align:center}
+  .why-grid{grid-template-columns:1fr}
+  .why-item{border-right:none;border-bottom:1px solid var(--border)}
+  .why-item:last-child{border-bottom:none}
+  .gallery-grid-4{grid-template-columns:1fr;grid-template-rows:auto}
+  .gallery-grid-4 .gp:nth-child(1){grid-row:span 1}
+  .gallery-grid-4 .gp{height:240px}
 }
 @media(max-width:600px){
   .grid3{grid-template-columns:1fr}
@@ -237,9 +276,19 @@ footer{background:#0a0a0a;border-top:2px solid var(--orange);padding:48px 0 28px
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#booking">Book</a></li>
     </ul>
-    <a class="nav-btn" href="tel:02088551636">📞 020 8855 1636</a>
+    <button class="nav-toggle" onclick="document.querySelector('.mobile-nav').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="nav-btn" href="tel:02088551636">📞 <span class="nav-btn-text">020 8855 1636</span></a>
   </div>
 </nav>
+<div class="mobile-nav">
+  <a href="#tyres" onclick="this.closest('.mobile-nav').classList.remove('open')">Tyres</a>
+  <a href="#services" onclick="this.closest('.mobile-nav').classList.remove('open')">Services</a>
+  <a href="#gallery" onclick="this.closest('.mobile-nav').classList.remove('open')">Gallery</a>
+  <a href="#reviews" onclick="this.closest('.mobile-nav').classList.remove('open')">Reviews</a>
+  <a href="#booking" onclick="this.closest('.mobile-nav').classList.remove('open')">📞 Book Now</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -290,6 +339,33 @@ footer{background:#0a0a0a;border-top:2px solid var(--orange);padding:48px 0 28px
     <div class="ti"><span class="ti-o">✓</span> Free Tyre Inspection</div>
   </div>
 </div>
+
+<!-- WHY CHOOSE US -->
+<section class="why-strip">
+  <div class="why-grid">
+    <div class="why-item r">
+      <div class="why-ico">🏆</div>
+      <div>
+        <div class="why-title">AA Approved</div>
+        <div class="why-desc">Recognised by the AA as a trusted garage. Every job done to a standard we stand behind.</div>
+      </div>
+    </div>
+    <div class="why-item r">
+      <div class="why-ico">📅</div>
+      <div>
+        <div class="why-title">Open 7 Days</div>
+        <div class="why-desc">Mon–Sat 8am to 6:30pm, Sunday 10am–4pm. We're here when other garages aren't.</div>
+      </div>
+    </div>
+    <div class="why-item r">
+      <div class="why-ico">📍</div>
+      <div>
+        <div class="why-title">Local to Plumstead</div>
+        <div class="why-desc">Based on Griffin Road SE18 for over 20 years. Serving Plumstead, Woolwich and Abbey Wood.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- TYRES -->
 <section class="sec tyres-sec" id="tyres">
@@ -382,16 +458,20 @@ footer{background:#0a0a0a;border-top:2px solid var(--orange);padding:48px 0 28px
       <h2>See Our <em>Workshop</em></h2>
       <p class="sub">Professional equipment, clean working environment. Come in and see for yourself.</p>
     </div>
-    <div class="gallery-grid r">
-      <div class="gp gp-tall">
+    <div class="gallery-grid-4">
+      <div class="gp r" style="transition-delay:.05s">
         <img src="photo1.jpg" alt="Derby Service Centre exterior — MOT Testing Station, 2A Griffin Road Plumstead SE18"/>
         <div class="gp-caption">Exterior — Griffin Road SE18</div>
       </div>
-      <div class="gp">
+      <div class="gp r" style="transition-delay:.15s">
+        <img src="photo3.jpg" alt="Derby Service Centre street view — Plumstead SE18"/>
+        <div class="gp-caption">Street view — Griffin Road</div>
+      </div>
+      <div class="gp r" style="transition-delay:.25s">
         <img src="photo2.jpg" alt="Interior workshop with car on ramp at Derby Service Centre"/>
         <div class="gp-caption">Workshop — car on ramp</div>
       </div>
-      <div class="gp">
+      <div class="gp r" style="transition-delay:.35s">
         <img src="photo4.jpg" alt="3500kg scissor lift — Derby Service Centre workshop equipment"/>
         <div class="gp-caption">3500kg scissor lift</div>
       </div>
@@ -450,6 +530,14 @@ footer{background:#0a0a0a;border-top:2px solid var(--orange);padding:48px 0 28px
               <div class="ci-val" style="font-size:14px;color:var(--orange)">Open in Google Maps →</div>
             </div>
           </a>
+        </div>
+        <div class="map-wrap">
+          <iframe
+            src="https://maps.google.com/maps?q=Derby+Service+Centre+Tyres+2A+Griffin+Road+Plumstead+SE18+7QF&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Derby Service Centre location map">
+          </iframe>
         </div>
       </div>
     </div>
