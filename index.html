@@ -231,7 +231,7 @@ footer{background:#0a0a0a;border-top:2px solid var(--orange);padding:48px 0 28px
 
 /* MAP */
 .map-wrap{margin-top:24px;border:1px solid var(--border);overflow:hidden;height:220px}
-.map-wrap iframe{width:100%;height:100%;border:none;filter:grayscale(1) invert(1) contrast(.85)}
+.map-wrap iframe{width:100%;height:100%;border:none}
 
 /* RESPONSIVE */
 @media(max-width:900px){
@@ -524,7 +524,9 @@ footer{background:#0a0a0a;border-top:2px solid var(--orange);padding:48px 0 28px
             </div>
           </div>
           <a href="https://maps.app.goo.gl/dtVCgDhk3SnKbcD97" target="_blank" class="ci" style="cursor:pointer">
-            <span class="ci-ico">🗺️</span>
+            <span class="ci-ico" style="display:flex;align-items:center;margin-top:2px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F26522" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
             <div>
               <div class="ci-label">Directions</div>
               <div class="ci-val" style="font-size:14px;color:var(--orange)">Open in Google Maps →</div>
